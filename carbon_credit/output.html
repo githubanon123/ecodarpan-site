@@ -9,7 +9,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:#F1F5F9;color:#1E293B;min-height:100vh}
 .steps{display:flex;align-items:center;gap:8px;padding:10px 28px;background:#0F2D1F;flex-wrap:wrap}
-.step{font-size:12px;color:#74C69D;text-decoration:none;padding:5px 12px;border-radius:5px;transition:background .12s}
+.step{font-size:12px;color:#74C69D;text-decoration:none;padding:5px 12px;border-radius:5px}
 .step:hover{background:rgba(255,255,255,.1)}
 .step.active{background:#2D6A4F;color:white;font-weight:600}
 .arr{color:#2D6A4F;font-size:14px}
@@ -20,25 +20,25 @@ header small{font-size:11px;color:#74C69D;display:block;margin-top:2px}
 .cg{display:flex;flex-direction:column;gap:5px}
 .cl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;font-weight:600}
 .pcards{display:flex;gap:7px}
-.pc{padding:7px 12px;border-radius:8px;border:2px solid #E2E8F0;cursor:pointer;min-width:100px;transition:all .12s}
-.pc .pi{font-size:17px}
-.pc .pn{font-size:11px;font-weight:700;margin-top:2px}
-.pc .pt{font-size:10px;color:#64748B;margin-top:1px}
+.pc{padding:8px 13px;border-radius:8px;border:2px solid #E2E8F0;cursor:pointer;min-width:115px;transition:all .12s}
+.pc .pi{font-size:18px}
+.pc .pn{font-size:12px;font-weight:700;margin-top:3px}
+.pc .pp{font-size:11px;color:#374151;font-family:monospace;margin-top:2px;font-weight:600}
+.pc .py{font-size:10px;color:#64748B;margin-top:1px}
 .sr{display:flex;align-items:center;gap:8px}
 .sv{font-size:17px;font-weight:700;min-width:65px}
 input[type="range"]{width:120px;accent-color:#1B4332}
-.rg{display:flex;gap:5px}
-.ro{padding:4px 11px;border-radius:5px;border:1.5px solid #E2E8F0;cursor:pointer;font-size:11px;font-weight:600;color:#64748B;transition:all .12s;user-select:none}
 .main{padding:18px 24px;max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.mrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.mc{background:white;border-radius:9px;border:1px solid #E2E8F0;padding:12px 14px}
-.ml{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:5px}
-.mb{font-size:20px;font-weight:700}
-.mi{font-size:12px;color:#374151;margin-top:1px;font-weight:600}
+.mrow3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mrow4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mc{background:white;border-radius:9px;border:1px solid #E2E8F0;padding:11px 12px}
+.ml{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:4px}
+.mb{font-size:18px;font-weight:700}
+.mi{font-size:11px;font-weight:600;margin-top:1px}
 .ms{font-size:10px;color:#64748B;margin-top:2px}
 .cc{background:white;border-radius:9px;border:1px solid #E2E8F0;overflow:hidden}
-.ctabs{display:flex;border-bottom:1px solid #E2E8F0;padding:0 14px}
-.ct{padding:10px 14px;font-size:12px;font-weight:600;color:#94A3B8;cursor:pointer;border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;margin-bottom:-1px}
+.ctabs{display:flex;border-bottom:1px solid #E2E8F0;padding:0 14px;gap:0}
+.ct{padding:9px 13px;font-size:11px;font-weight:600;color:#94A3B8;cursor:pointer;border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;margin-bottom:-1px;white-space:nowrap}
 .ct.active{color:#1B4332;border-bottom-color:#1B4332}
 .cbdy{padding:14px}
 .cn{font-size:11px;color:#94A3B8;margin-top:8px;text-align:center}
@@ -61,193 +61,264 @@ tr:last-child td{border-bottom:none}
 .cv-tot td{color:white;font-weight:700;font-size:13px;font-family:monospace}
 .cv-res{padding:10px 14px;display:flex;align-items:center;gap:10px}
 .warn{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:9px 13px;font-size:12px;color:#92400E}
+/* questions panel */
+.qcard{background:white;border-radius:9px;border:2px solid #F59E0B;overflow:hidden}
+.qcard-hd{padding:11px 16px;background:#FFFBEB;border-bottom:1px solid #FDE68A}
+.qcard-hd h3{font-size:13px;font-weight:700;color:#92400E}
+.qcard-hd p{font-size:11px;color:#B45309;margin-top:2px}
+.qlist{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.qitem{display:flex;gap:10px;align-items:flex-start}
+.qpill{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.q-crit{background:#FEE2E2;color:#991B1B}
+.q-imp{background:#FEF3C7;color:#92400E}
+.q-low{background:#F1F5F9;color:#64748B}
+.qtext{font-size:12px;color:#374151;line-height:1.5}
+.qsub{font-size:11px;color:#64748B;margin-top:2px}
 </style>
 </head>
 <body>
 <nav class="steps">
   <a href="pipeline.html" class="step">📋 Document Pipeline</a>
   <span class="arr">→</span>
-  <a href="#" class="step" id="navAssLink">⚙️ Assumptions</a>
+  <a href="#" class="step" id="navAss">⚙️ Assumptions</a>
   <span class="arr">→</span>
   <a href="output.html" class="step active">📊 Financial Output</a>
 </nav>
 <header>
   <div>
     <h1>Financial Output</h1>
-    <small id="cfgNote">Loading assumptions…</small>
+    <small id="cfgNote">Loading…</small>
   </div>
-  <div style="font-size:10px;color:#74C69D;text-align:right;max-width:260px;line-height:1.5">
-    All amounts in USD and INR (₹84/$) · Developer costs only in P&L<br>NGO costs funded from NGO share
+  <div style="font-size:10px;color:#74C69D;text-align:right;line-height:1.6">
+    Amounts in USD · INR at ₹84/$ · 40-year model<br>Developer P&L only · NGO costs from NGO share
   </div>
 </header>
 
 <div class="cb">
-  <div class="cg"><div class="cl">Project Type</div><div class="pcards" id="pcards"></div></div>
   <div class="cg">
-    <div class="cl">Scale</div>
-    <div class="sr"><div class="sv" id="scaleV">5,000 ha</div>
-    <div><input type="range" id="scaleS" min="1000" max="30000" step="500" value="5000">
-    <div style="display:flex;justify-content:space-between;font-size:9px;color:#94A3B8"><span>1k</span><span>30k ha</span></div></div></div>
-    <div id="farmN" style="font-size:10px;color:#64748B"></div>
+    <div class="cl">Project Type — price &amp; yield from Assumptions</div>
+    <div class="pcards" id="pcards"></div>
   </div>
   <div class="cg">
-    <div class="cl">Price Scenario</div>
-    <div class="rg" id="scGroup"></div>
+    <div class="cl">Scale</div>
+    <div class="sr">
+      <div class="sv" id="scaleV">5,000 ha</div>
+      <div><input type="range" id="scaleS" min="1000" max="30000" step="500" value="5000">
+      <div style="display:flex;justify-content:space-between;font-size:9px;color:#94A3B8"><span>1k</span><span>30k ha</span></div></div>
+    </div>
+    <div id="farmN" style="font-size:10px;color:#64748B;margin-top:2px"></div>
   </div>
   <div class="cg">
     <div class="cl">Developer Revenue Share</div>
-    <div class="sr"><div class="sv" id="devV">30%</div>
-    <div><input type="range" id="devS" min="20" max="40" step="1" value="30">
-    <div style="display:flex;justify-content:space-between;font-size:9px;color:#94A3B8"><span>20%</span><span>40%</span></div></div></div>
-    <div id="shareN" style="font-size:10px;color:#64748B"></div>
+    <div class="sr">
+      <div class="sv" id="devV">30%</div>
+      <div><input type="range" id="devS" min="20" max="40" step="1" value="30">
+      <div style="display:flex;justify-content:space-between;font-size:9px;color:#94A3B8"><span>20%</span><span>40%</span></div></div>
+    </div>
+    <div id="shareN" style="font-size:10px;color:#64748B;margin-top:2px"></div>
   </div>
 </div>
 
 <div class="main">
-  <div class="mrow" id="mrow"></div>
+  <div class="mrow3" id="mrow1"></div>
+  <div class="mrow4" id="mrow2"></div>
+
   <div class="cc">
-    <div class="ctabs">
-      <button class="ct active" id="tabA" onclick="setTab('a')">Annual Cash Flow</button>
-      <button class="ct" id="tabC" onclick="setTab('c')">Cumulative Position</button>
+    <div class="ctabs" id="chartTabs">
+      <button class="ct active" id="tabDA" onclick="setTab('da')">Annual — Developer</button>
+      <button class="ct" id="tabOA" onclick="setTab('oa')">Annual — All Parties</button>
+      <button class="ct" id="tabC" onclick="setTab('c')">Cumulative (40yr)</button>
     </div>
     <div class="cbdy">
-      <div id="wA"><canvas id="cA" height="250"></canvas></div>
-      <div id="wC" style="display:none"><canvas id="cC" height="250"></canvas></div>
+      <div id="wDA"><canvas id="cDA" height="250"></canvas></div>
+      <div id="wOA" style="display:none"><canvas id="cOA" height="250"></canvas></div>
+      <div id="wC"  style="display:none"><canvas id="cC"  height="260"></canvas></div>
       <div class="cn" id="cNote"></div>
     </div>
   </div>
+
   <div id="whoDiv"></div>
   <div id="cvDiv"></div>
-  <div class="warn" id="scWarn" style="display:none">⚠️ Below 1,000 ha projects "often struggle to achieve economic viability" — Q2, Line 31.</div>
+  <div id="qDiv"></div>
+  <div class="warn" id="scWarn" style="display:none">⚠️ Below 1,000 ha — Q2 L31: projects this size "often struggle to achieve economic viability".</div>
+  <div class="warn" id="manWarn" style="display:none">⚠️ Mangrove projects use government/community land (Q9 L157), not individual farmer land. The mobilization cost model does not apply. Treat mangrove output as directional only.</div>
 </div>
 
 <script>
-const R=84;
+const R=84,YMAX=40;
 const DEFAULTS={
-  prices:{agroforestry:{conservative:6,base:8,premium:12},mango:{conservative:5,base:6,premium:8},mangrove:{conservative:15,base:20,premium:35}},
-  yields:{agroforestry:{conservative:3,base:4.5,premium:6},mango:{conservative:2,base:3,premium:4},mangrove:{conservative:6,base:9,premium:14}},
+  prices:{agroforestry:8,mango:6,mangrove:20},
+  yields:{agroforestry:4.5,mango:3,mangrove:9},
   firstCreditYear:{agroforestry:4,mango:5,mangrove:7},
   costs:{pdd_base:12000,pdd_per_ha:0.30,valid_base:22000,valid_per_ha:0.40,legal:5000,gis_base:3000,gis_per_ha:1.50,mrv_base:2000,mrv_per_ha:4.00,mob_per_farmer:10,train_per_farmer:6,mon_per_ha:8,admin_annual:10000,engage_per_farmer:4,verif_base:25000,verif_per_ha:0.30,verif_cycle:3},
   shares:{ngo_pct:10}
 };
 const PROJS={
-  agroforestry:{name:'Agroforestry',icon:'🌳',color:'#2D6A4F',light:'#D8F3DC',note:'Credits ~Y4'},
-  mango:{name:'Mango Orchard',icon:'🥭',color:'#B45309',light:'#FEF3C7',note:'Credits ~Y5'},
-  mangrove:{name:'Mangrove',icon:'🌿',color:'#0E7490',light:'#CFFAFE',note:'Credits ~Y7'}
+  agroforestry:{name:'Agroforestry',icon:'🌳',color:'#2D6A4F',light:'#D8F3DC'},
+  mango:{name:'Mango Orchard',icon:'🥭',color:'#B45309',light:'#FEF3C7'},
+  mangrove:{name:'Mangrove',icon:'🌿',color:'#0E7490',light:'#CFFAFE'}
 };
 
 function loadCfg(){try{const p=new URLSearchParams(location.search).get('config');if(p)return JSON.parse(atob(decodeURIComponent(p)));}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
 const CFG=loadCfg();
 
-let ST={type:'agroforestry',ha:5000,sc:'base',dp:30};
-let chA=null,chC=null,activeTab='a';
+let ST={type:'agroforestry',ha:5000,dp:30};
+let charts={};
+let activeTab='da';
 
-function u(v){return Math.abs(v)>=1e6?'$'+(v/1e6).toFixed(1)+'M':'$'+Math.round(Math.abs(v)/1000)+'k';}
+function u(v){return Math.abs(v)>=1e6?'$'+(Math.abs(v)/1e6).toFixed(1)+'M':'$'+Math.round(Math.abs(v)/1000)+'k';}
 function ui(v){const i=Math.abs(v)*R;return i>=1e7?'₹'+(i/1e7).toFixed(1)+'Cr':i>=1e5?'₹'+(i/1e5).toFixed(0)+'L':'₹'+Math.round(i/1000)+'k';}
 function sgn(v){return(v>=0?'+':'-')+u(Math.abs(v));}
-function amtCell(usd){return`<span class="amt">${u(usd)}</span><span class="ainr">${ui(usd)}</span>`;}
+function sa(v){return(v>=0?'+':'-')+u(Math.abs(v));}
+function saI(v){return(v>=0?'+':'-')+ui(Math.abs(v));}
+function ac(usd){return`<span class="amt">${u(usd)}</span><span class="ainr">${ui(usd)}</span>`;}
 
-function compute(cfg,type,ha,sc,dp){
+function compute(cfg,type,ha,dp){
   const c=cfg.costs,ns=cfg.shares.ngo_pct/100,ds=dp/100,fs=Math.max(0,1-ds-ns);
   const fm=Math.round(ha*0.5),fy=cfg.firstCreditYear[type];
-  const pdd=c.pdd_base+c.pdd_per_ha*ha,val=c.valid_base+c.valid_per_ha*ha,leg=c.legal,gis=c.gis_base+c.gis_per_ha*ha,mrv=c.mrv_base+c.mrv_per_ha*ha;
+  const pdd=c.pdd_base+c.pdd_per_ha*ha,val=c.valid_base+c.valid_per_ha*ha;
+  const leg=c.legal,gis=c.gis_base+c.gis_per_ha*ha,mrv=c.mrv_base+c.mrv_per_ha*ha;
   const dY1=pdd+val+leg+gis+mrv,mon=c.mon_per_ha*ha,adm=c.admin_annual,dAn=mon+adm;
   const vr=c.verif_base+c.verif_per_ha*ha,vc=Math.max(1,Math.round(c.verif_cycle));
   const nM=c.mob_per_farmer*fm,nT=c.train_per_farmer*fm,nY1=nM+nT,nAn=c.engage_per_farmer*fm;
-  const pr=cfg.prices[type][sc],yl=cfg.yields[type][sc],cr=ha*yl,gr=cr*pr,dr=gr*ds,nr=gr*ns,fr=gr*fs;
+  const pr=cfg.prices[type],yl=cfg.yields[type];
+  const cr=ha*yl,gr=cr*pr,dr=gr*ds,nr=gr*ns,fr=gr*fs;
   let rows=[],dc=0,tdC=0,tnC=0,tdR=0,tnR=0,tfR=0,tgR=0;
-  for(let yr=1;yr<=20;yr++){
+  let dc20=null,tdn20=null,mA20=null;
+  for(let yr=1;yr<=YMAX;yr++){
     let d=dAn+(yr===1?dY1:0)+(yr%vc===0?vr:0);
     let n=nAn+(yr===1?nY1:0);
     const has=yr>=fy,dR=has?dr:0,nR=has?nr:0,fR=has?fr:0,gR=has?gr:0;
     dc+=dR-d;tdC+=d;tnC+=n;tdR+=dR;tnR+=nR;tfR+=fR;tgR+=gR;
-    rows.push({yr:`Y${yr}`,d,dr:dR,dn:dR-d,cum:dc,n,nr:nR});
+    if(yr===20){dc20=dc;tdn20=tdR-tdC;mA20=(tdR-tdC)+(tnR-tnC)+tfR;}
+    rows.push({yr:`Y${yr}`,d,dr:dR,dn:dR-d,cum:dc,n,nr:nR,nc:n,gc:gR,tc:d+n});
   }
   const pr2=rows.slice(0,fy-1).reduce((s,r)=>s+r.d,0),bk=rows.findIndex(r=>r.cum>0);
   const tdn=tdR-tdC,tnn=tnR-tnC,tt=tdC+tnC,mA=tdn+tnn+tfR,mB=tgR-tt;
-  return{rows,cr,gr,dr,nr,fr,pr2,bk,fm,fy,ds,ns,fs,dp,ngoPct:Math.round(ns*100),farPct:Math.round(fs*100),
+  return{rows,cr,gr,dr,nr,fr,pr2,bk,fm,fy,dp,ngoPct:Math.round(ns*100),farPct:Math.round(fs*100),
     pdd,val,leg,gis,mrv,dY1,mon,adm,dAn,vr,vc,nM,nT,nY1,nAn,
-    tdC,tnC,tt,tdR,tnR,tfR,tgR,tdn,tnn,mA,mB};
+    tdC,tnC,tt,tdR,tnR,tfR,tgR,tdn,tnn,mA,mB,
+    tdn20,mA20,dc20,price:pr,yield:yl};
 }
 
+// CHARTS
+function mkOpts(tfmt){return{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const v=Math.abs(ctx.parsed.y);return`${ctx.dataset.label}: ${u(v)} · ${ui(v)}`;}}}}
+  ,scales:{x:{ticks:{font:{size:8},maxRotation:0},grid:{display:false}},y:{ticks:{font:{size:9},callback:tfmt||((v)=>u(v))},grid:{color:'#F1F5F9'}}}};}
+
 function initCharts(col){
-  if(chA){chA.destroy();chA=null;}if(chC){chC.destroy();chC=null;}
-  const bo={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}},grid:{display:false}},y:{ticks:{font:{size:10},callback:v=>u(v)},grid:{color:'#F1F5F9'}}}};
-  chA=new Chart(document.getElementById('cA'),{type:'bar',data:{labels:[],datasets:[
-    {label:'Developer costs',data:[],backgroundColor:'#FECACA',borderRadius:3},
-    {label:'Developer revenue',data:[],backgroundColor:col+'CC',borderRadius:3}
-  ]},options:{...bo,plugins:{...bo.plugins,tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${u(Math.abs(ctx.parsed.y))} · ${ui(Math.abs(ctx.parsed.y))}`}}}}});
-  chC=new Chart(document.getElementById('cC'),{type:'line',data:{labels:[],datasets:[
-    {label:'Cumulative',data:[],borderColor:col,backgroundColor:col+'18',fill:true,borderWidth:2.5,pointRadius:0,tension:.15},
-    {label:'Breakeven',data:[],borderColor:'#EF444480',borderDash:[4,4],borderWidth:1.5,pointRadius:0,fill:false}
-  ]},options:{...bo,plugins:{...bo.plugins,tooltip:{callbacks:{label:ctx=>ctx.datasetIndex===0?`Cumulative: ${u(ctx.parsed.y)} · ${ui(ctx.parsed.y)}`:''}}}}});
+  Object.values(charts).forEach(c=>c.destroy());charts={};
+  const L20=Array.from({length:20},(_,i)=>`Y${i+1}`);
+  const L40=Array.from({length:40},(_,i)=>`Y${i+1}`);
+  // Developer annual (20yr)
+  charts.da=new Chart(document.getElementById('cDA'),{type:'bar',data:{labels:L20,datasets:[
+    {label:'Dev costs',data:[],backgroundColor:'#FECACA',borderRadius:3},
+    {label:'Dev revenue',data:[],backgroundColor:col+'CC',borderRadius:3}
+  ]},options:mkOpts()});
+  charts.da._col=col;
+  // Overall annual (20yr)
+  charts.oa=new Chart(document.getElementById('cOA'),{type:'bar',data:{labels:L20,datasets:[
+    {label:'Total costs (dev + NGO)',data:[],backgroundColor:'#FCA5A5',borderRadius:3},
+    {label:'Gross revenue (all parties)',data:[],backgroundColor:col+'99',borderRadius:3},
+  ]},options:mkOpts()});
+  // Cumulative (40yr)
+  charts.c=new Chart(document.getElementById('cC'),{type:'line',data:{labels:L40,datasets:[
+    {label:'Dev cumulative',data:[],borderColor:col,backgroundColor:col+'15',fill:true,borderWidth:2.5,pointRadius:0,tension:.15},
+    {label:'Zero',data:Array(40).fill(0),borderColor:'#EF444460',borderDash:[4,4],borderWidth:1.5,pointRadius:0,fill:false}
+  ]},options:mkOpts()});
 }
 
 function updCharts(m){
-  const L=m.rows.map(r=>r.yr);
-  chA.data.labels=L;chA.data.datasets[0].data=m.rows.map(r=>-r.d);chA.data.datasets[1].data=m.rows.map(r=>r.dr);chA.update('none');
-  chC.data.labels=L;chC.data.datasets[0].data=m.rows.map(r=>r.cum);chC.data.datasets[1].data=m.rows.map(()=>0);chC.update('none');
+  const r20=m.rows.slice(0,20),r40=m.rows;
+  const col=PROJS[ST.type].color;
+  if(charts.da._col!==col){initCharts(col);}
+  charts.da.data.datasets[0].data=r20.map(r=>-r.d);
+  charts.da.data.datasets[1].data=r20.map(r=>r.dr);
+  charts.da.update('none');
+  charts.oa.data.datasets[0].data=r20.map(r=>-(r.d+r.n));
+  charts.oa.data.datasets[1].data=r20.map(r=>r.gc);
+  charts.oa.data.datasets[1].backgroundColor=col+'99';
+  charts.oa.update('none');
+  charts.c.data.datasets[0].data=r40.map(r=>r.cum);
+  charts.c.data.datasets[0].borderColor=col;
+  charts.c.data.datasets[0].backgroundColor=col+'15';
+  charts.c.update('none');
 }
 
 function setTab(t){
   activeTab=t;
-  document.getElementById('wA').style.display=t==='a'?'':'none';
-  document.getElementById('wC').style.display=t==='c'?'':'none';
-  document.getElementById('tabA').classList.toggle('active',t==='a');
-  document.getElementById('tabC').classList.toggle('active',t==='c');
-  document.getElementById('cNote').textContent=t==='a'?'Red = developer costs only (PDD, validation, GIS, monitoring, verification, admin). Green = developer revenue share. NGO costs excluded — funded from NGO share.':'Dashed red line = breakeven (cumulative turns positive). All amounts USD · INR shown in chart tooltip.';
+  const map={da:'wDA',oa:'wOA',c:'wC'};
+  Object.entries(map).forEach(([k,v])=>document.getElementById(v).style.display=k===t?'':'none');
+  ['tabDA','tabOA','tabC'].forEach(id=>document.getElementById(id).classList.toggle('active',id==='tab'+t.toUpperCase()));
+  const col=PROJS[ST.type].color;
+  document.querySelectorAll('.ct.active').forEach(el=>{el.style.color=col;el.style.borderBottomColor=col;});
+  const notes={
+    da:'Developer costs only (red) vs developer revenue (green). NGO costs excluded — funded from NGO revenue share. First 20 years shown.',
+    oa:'All-party view: red = developer costs, yellow = NGO costs (stacked). Green = gross carbon revenue. First 20 years. Shows total project economics.',
+    c:'Developer cumulative net position over 40 years. Dashed line = breakeven. Hover for USD · INR values.'
+  };
+  document.getElementById('cNote').textContent=notes[t];
 }
 
-function updMetrics(m,col){
-  const cards=[
-    {label:'Developer investment before revenue',big:u(m.pr2),inr:ui(m.pr2),sub:`${m.fy-1} yrs of pure outflow`,color:'#DC2626',bg:'#FEF2F2'},
-    {label:'First carbon credit year',big:`Year ${m.fy}`,inr:'',sub:'Zero revenue before this year',color:'#D97706',bg:'#FFFBEB'},
-    {label:'Cumulative breakeven',big:m.bk>=0?`Year ${m.bk+1}`:'>20 yrs',inr:'',sub:m.bk>=0?'Dev position turns positive':'Scale up or increase price',color:m.bk>=0?'#059669':'#DC2626',bg:m.bk>=0?'#ECFDF5':'#FEF2F2'},
-    {label:'Developer 20-yr net',big:u(m.tdn),inr:ui(m.tdn),sub:'After all developer costs',color:m.tdn>0?'#059669':'#DC2626',bg:m.tdn>0?'#ECFDF5':'#FEF2F2'}
+function updMetrics(m){
+  const mA40=m.mA;
+  function card(l,b,i,s,col,bg){return`<div class="mc" style="background:${bg};border-color:${col}30">
+    <div class="ml">${l}</div>
+    <div class="mb" style="color:${col}">${b}</div>
+    ${i?`<div class="mi" style="color:${col}">${i}</div>`:''}
+    <div class="ms">${s}</div>
+  </div>`;}
+  // Row 1: operational decision metrics
+  const r1=[
+    card('Investment before revenue',u(m.pr2),ui(m.pr2),`${m.fy-1} yrs pure outflow`,'#DC2626','#FEF2F2'),
+    card('First credit year',`Year ${m.fy}`,'',`${u(m.gr)} · ${ui(m.gr)} gross/yr`,'#D97706','#FFFBEB'),
+    card('Cumulative breakeven (dev)',m.bk>=0?`Year ${m.bk+1}`:'>40 yrs','',m.bk>=0?'Dev position turns positive':'Scale up or adjust price/yield',m.bk>=0?'#059669':'#DC2626',m.bk>=0?'#ECFDF5':'#FEF2F2'),
   ];
-  document.getElementById('mrow').innerHTML=cards.map(c=>`<div class="mc" style="background:${c.bg};border-color:${c.color}30">
-    <div class="ml">${c.label}</div>
-    <div class="mb" style="color:${c.color}">${c.big}</div>
-    ${c.inr?`<div class="mi" style="color:${c.color}">${c.inr}</div>`:''}
-    <div class="ms">${c.sub}</div>
-  </div>`).join('');
+  // Row 2: net returns — developer and overall project
+  const r2=[
+    card('Developer 20-yr net profit',sa(m.tdn20),saI(m.tdn20),'After all developer costs',m.tdn20>0?'#059669':'#DC2626',m.tdn20>0?'#ECFDF5':'#FEF2F2'),
+    card('Developer 40-yr net profit',sa(m.tdn),saI(m.tdn),'Full project life',m.tdn>0?'#059669':'#DC2626',m.tdn>0?'#ECFDF5':'#FEF2F2'),
+    card('Overall project 20-yr net profit',sa(m.mA20),saI(m.mA20),'All parties: dev + NGO + farmers',m.mA20>0?'#1D4ED8':'#DC2626',m.mA20>0?'#EFF6FF':'#FEF2F2'),
+    card('Overall project 40-yr net profit',sa(mA40),saI(mA40),'All parties combined — full life',mA40>0?'#1D4ED8':'#DC2626',mA40>0?'#EFF6FF':'#FEF2F2'),
+  ];
+  document.getElementById('mrow1').innerHTML=r1.join('');
+  document.getElementById('mrow2').innerHTML=r2.join('');
 }
 
-function brow(b,l){return`<span class="badge" style="background:${b==='dev'?'#DBEAFE':'#DCFCE7'};color:${b==='dev'?'#1E40AF':'#166534'}">${l}</span>`;}
+function brow2(b,l){return`<span class="badge" style="background:${b==='dev'?'#DBEAFE':'#DCFCE7'};color:${b==='dev'?'#1E40AF':'#166534'}">${l}</span>`;}
 
-function updWho(m,col){
-  function dr(b,label,usd,note){return`<tr><td>${brow(b,b==='dev'?'Developer':'NGO')}</td><td>${label}</td><td>${amtCell(usd)}</td><td style="font-size:11px;color:#64748B">${note}</td></tr>`;}
-  function sub(l){return`<tr><td colspan="4" style="padding:7px 10px 3px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;background:#FAFAFA;border-top:2px solid #F1F5F9">${l}</td></tr>`;}
-  const rows=sub('Year 1 — one-time setup')
-    +dr('dev','PDD preparation',m.pdd,'Q3 L45 — INR 10L–1Cr range, scaled by project size')
-    +dr('dev','VVB validation',m.val,'Q5 L85 — INR 15–50L, scaled by project size')
-    +dr('dev','Legal structuring',m.leg,'Benchmark — Q3 L51 qualitative only')
-    +dr('dev','GIS / baseline',m.gis,'Benchmark — developer responsibility, no cost in Q&A')
-    +dr('dev','MRV system setup',m.mrv,'Benchmark — Q6 L103 qualitative only')
-    +dr('ngo','Farmer mobilization',m.nM,'Q4 L67 — INR 500–2,000/farmer')
-    +dr('ngo','Initial training',m.nT,'Benchmark — Q4 L69, no number given')
-    +`<tr><td><span class="badge" style="background:#FEF3C7;color:#92400E">Farmers</span></td><td>Land & plantation labour</td><td style="color:#94A3B8;font-style:italic">In-kind</td><td style="font-size:11px;color:#64748B">Implied by participation — not monetised</td></tr>`
+function updWho(m){
+  function dr(b,label,usd,note){return`<tr><td>${brow2(b,b==='dev'?'Developer':'NGO')}</td><td>${label}</td><td>${ac(usd)}</td><td style="font-size:11px;color:#64748B">${note}</td></tr>`;}
+  function sub(l){return`<tr><td colspan="4" style="padding:6px 10px 2px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;background:#FAFAFA;border-top:2px solid #F1F5F9">${l}</td></tr>`;}
+  const trows=sub('Year 1 — one-time setup')
+    +dr('dev','PDD preparation',m.pdd,'Q3 L45 · INR 10L–1Cr range')
+    +dr('dev','VVB validation',m.val,'Q5 L85 · INR 15–50L')
+    +dr('dev','Legal structuring',m.leg,'Benchmark')
+    +dr('dev','GIS / baseline',m.gis,'Benchmark')
+    +dr('dev','MRV system setup',m.mrv,'Benchmark')
+    +dr('ngo','Farmer mobilization',m.nM,'Q4 L67 · INR 500–2,000/farmer')
+    +dr('ngo','Initial training',m.nT,'Benchmark')
+    +`<tr><td><span class="badge" style="background:#FEF3C7;color:#92400E">Farmers</span></td><td>Land &amp; plantation labour</td><td style="color:#94A3B8;font-style:italic;font-size:12px">In-kind</td><td style="font-size:11px;color:#64748B">Not monetised</td></tr>`
     +sub('Annual recurring')
-    +dr('dev','Field monitoring',m.mon,'Benchmark — Q6 L105 "varies per hectare", no number')
-    +dr('dev','Admin & oversight',m.adm,'Benchmark — not in document')
-    +dr('ngo','Farmer engagement',m.nAn,'Benchmark — Q4 L71, recurring confirmed, no number')
+    +dr('dev','Field monitoring',m.mon,'Q6 L105 — no number, benchmark')
+    +dr('dev','Admin & oversight',m.adm,'Benchmark')
+    +dr('ngo','Farmer engagement',m.nAn,'Benchmark')
     +sub(`Every ${m.vc} years — verification`)
-    +dr('dev','VVB verification',m.vr,`Q5 L87 — INR 10–40L/cycle. Cycle = ${m.vc} yrs (midpoint of 1–5yr range)`);
+    +dr('dev','VVB verification',m.vr,`Q5 L87 · cycle = ${m.vc} yrs`);
 
   const revCards=[
-    {label:`Developer (${m.dp}%)`,usd:m.dr,bg:'#DBEAFE',tc:'#1E40AF',note:`Covers all dev costs above + profit. Q10 L173: 20–40%.`},
-    {label:`NGO (${m.ngoPct}%)`,usd:m.nr,bg:'#DCFCE7',tc:'#166534',note:`Covers NGO costs above. Q10 L173: 5–15%.`},
-    {label:`Farmers (${m.farPct}%)`,usd:m.fr,bg:'#FEF3C7',tc:'#92400E',note:`Residual. No direct costs. Q10 L173: 50–70%.`}
-  ].map(c=>`<div style="background:${c.bg};border-radius:7px;padding:9px 12px;flex:1;min-width:150px">
+    {label:`Developer (${m.dp}%)`,usd:m.dr,bg:'#DBEAFE',tc:'#1E40AF',note:'Q10 L173: 20–40%'},
+    {label:`NGO (${m.ngoPct}%)`,usd:m.nr,bg:'#DCFCE7',tc:'#166534',note:'Q10 L173: 5–15%'},
+    {label:`Farmers (${m.farPct}%)`,usd:m.fr,bg:'#FEF3C7',tc:'#92400E',note:'Q10 L173: 50–70%'},
+  ].map(c=>`<div style="background:${c.bg};border-radius:7px;padding:9px 12px;flex:1;min-width:140px">
     <div style="font-size:11px;color:${c.tc};font-weight:700">${c.label}</div>
     <div style="font-size:16px;font-weight:700;margin:3px 0">${u(c.usd)}</div>
-    <div style="font-size:11px;color:#64748B;font-weight:600">${ui(c.usd)}/yr</div>
-    <div style="font-size:10px;color:#64748B;margin-top:3px">${c.note}</div>
+    <div style="font-size:11px;color:#374151;font-weight:600">${ui(c.usd)}/yr</div>
+    <div style="font-size:10px;color:#64748B;margin-top:2px">${c.note}</div>
   </div>`).join('');
 
   document.getElementById('whoDiv').innerHTML=`<div class="tc">
-    <div class="th"><h3>Who Pays What</h3><p>Cost bearer by line item · Annual revenue at full run rate: ${u(m.gr)}/yr · ${ui(m.gr)}/yr gross</p></div>
-    <table><thead><tr><th>Bearer</th><th>Item</th><th>Amount (USD · INR)</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="th"><h3>Who Pays What</h3><p>Gross annual revenue: ${u(m.gr)} · ${ui(m.gr)}/yr</p></div>
+    <table><thead><tr><th>Bearer</th><th>Item</th><th>Amount (USD · INR)</th><th>Note</th></tr></thead><tbody>${trows}</tbody></table>
     <div style="padding:11px 14px;border-top:2px solid #E2E8F0">
       <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:9px">Annual revenue split (from Year ${m.fy} onward)</div>
       <div style="display:flex;gap:9px;flex-wrap:wrap">${revCards}</div>
@@ -260,14 +331,16 @@ function updCV(m){
   const match=Math.abs(m.mA-m.mB)<2;
   function arow(label,rev,cost,net,bg){return`<tr style="background:${bg||''};border-bottom:1px solid #F8FAFC">
     <td style="font-size:12px;font-weight:600">${label}</td>
-    <td style="text-align:right"><span class="amt" style="color:#059669">${u(rev)}</span><span class="ainr" style="text-align:right">${ui(rev)}</span></td>
-    <td style="text-align:right"><span class="amt" style="color:#DC2626">(${u(cost)})</span><span class="ainr" style="text-align:right">${ui(cost)}</span></td>
-    <td style="text-align:right"><span class="amt" style="color:${net>=0?'#059669':'#DC2626'}">${sgn(net)}</span><span class="ainr" style="text-align:right">${ui(Math.abs(net))}</span></td>
+    <td style="text-align:right">${ac(rev)}</td>
+    <td style="text-align:right"><span class="amt" style="color:#DC2626">-${u(cost)}</span><span class="ainr">-${ui(cost)}</span></td>
+    <td style="text-align:right"><span class="amt" style="color:${net>=0?'#059669':'#DC2626'}">${sgn(net)}</span><span class="ainr">${ui(Math.abs(net))}</span></td>
   </tr>`;}
-  function brow2(label,val,col){return`<tr style="border-bottom:1px solid #F8FAFC"><td style="font-size:12px">${label}</td><td style="text-align:right"><span class="amt" style="color:${col}">${val>0?'+':val<0?'-':''} ${u(Math.abs(val))}</span><span class="ainr" style="text-align:right">${ui(Math.abs(val))}</span></td></tr>`;}
-
+  function brow3(label,val,col){return`<tr style="border-bottom:1px solid #F8FAFC">
+    <td style="font-size:12px">${label}</td>
+    <td style="text-align:right"><span class="amt" style="color:${col}">${val>0?'+':'-'}${u(Math.abs(val))}</span><span class="ainr">${ui(Math.abs(val))}</span></td>
+  </tr>`;}
   document.getElementById('cvDiv').innerHTML=`<div class="tc">
-    <div class="th"><h3>Profit Cross-Validation — 20-Year Totals</h3><p>Two independent methods — must agree</p></div>
+    <div class="th"><h3>Profit Cross-Validation — 40-Year Totals</h3><p>Two independent methods — must agree</p></div>
     <div class="cv-cols">
       <div class="cv-col">
         <div class="cv-col-hd">METHOD A — Sum of each agent's (revenue − cost)</div>
@@ -275,7 +348,7 @@ function updCV(m){
         <tbody>
           ${arow(`Developer (${m.dp}%)`,m.tdR,m.tdC,m.tdn)}
           ${arow(`NGO (${m.ngoPct}%)`,m.tnR,m.tnC,m.tnn)}
-          ${arow(`Farmers (${m.farPct}%)`,m.tfR,0,m.tfR,'#FFFBEB50')}
+          ${arow(`Farmers (${m.farPct}%)`,m.tfR,0,m.tfR,'#FFFBEB40')}
         </tbody>
         <tfoot><tr class="cv-tot"><td>Total (A)</td><td colspan="2"></td><td style="text-align:right">${sgn(m.mA)}<br><span style="font-size:10px;color:#A7F3D0">${ui(Math.abs(m.mA))}</span></td></tr></tfoot>
         </table>
@@ -283,10 +356,10 @@ function updCV(m){
       <div class="cv-col">
         <div class="cv-col-hd">METHOD B — Total revenue − total cost</div>
         <table><tbody>
-          ${brow2('Gross carbon revenue (20yr)',m.tgR,'#059669')}
-          ${brow2('Developer costs (20yr)',-m.tdC,'#DC2626')}
-          ${brow2('NGO costs (20yr)',-m.tnC,'#DC2626')}
-          <tr style="border-bottom:1px solid #F8FAFC"><td style="font-size:12px">Farmer costs</td><td style="text-align:right;font-size:11px;color:#94A3B8">In-kind only</td></tr>
+          ${brow3('Gross revenue (40yr)',m.tgR,'#059669')}
+          ${brow3('Developer costs (40yr)',-m.tdC,'#DC2626')}
+          ${brow3('NGO costs (40yr)',-m.tnC,'#DC2626')}
+          <tr style="border-bottom:1px solid #F8FAFC"><td style="font-size:12px">Farmer costs</td><td style="text-align:right;font-size:11px;color:#94A3B8">In-kind</td></tr>
         </tbody>
         <tfoot><tr class="cv-tot"><td>Total (B)</td><td style="text-align:right">${sgn(m.mB)}<br><span style="font-size:10px;color:#A7F3D0">${ui(Math.abs(m.mB))}</span></td></tr></tfoot>
         </table>
@@ -295,63 +368,83 @@ function updCV(m){
     <div class="cv-res" style="background:${match?'#ECFDF5':'#FEF2F2'}">
       <span style="font-size:18px">${match?'✅':'❌'}</span>
       <div>
-        <div style="font-size:13px;font-weight:700;color:${match?'#065F46':'#991B1B'}">${match?`Methods agree — Δ $${Math.round(Math.abs(m.mA-m.mB))} (rounding only)`:`Mismatch — Δ ${u(Math.abs(m.mA-m.mB))} — check model`}</div>
+        <div style="font-size:13px;font-weight:700;color:${match?'#065F46':'#991B1B'}">${match?`Methods agree — Δ $${Math.round(Math.abs(m.mA-m.mB))} (rounding only)`:`Mismatch Δ ${u(Math.abs(m.mA-m.mB))}`}</div>
         <div style="font-size:11px;color:#64748B;margin-top:2px">A = ${u(m.mA)} · ${ui(Math.abs(m.mA))} &nbsp;|&nbsp; B = ${u(m.mB)} · ${ui(Math.abs(m.mB))}</div>
       </div>
     </div>
   </div>`;
 }
 
+function updQuestions(){
+  const qs=[
+    {crit:'critical',label:'CRITICAL',text:'Carbon yield per hectare per year for each project type',sub:'Q9 Line 141 asked this explicitly. The answer gave no numbers — only qualitative comparisons ("moderate", "lower", "highest"). This single number drives all revenue in the model. The entire output changes materially with it.'},
+    {crit:'critical',label:'CRITICAL',text:'Annual monitoring cost per hectare',sub:'Q6 asked for this explicitly. No number given. Currently using $8/ha/yr (₹672/ha/yr) benchmark. This is the highest-sensitivity recurring cost item.'},
+    {crit:'critical',label:'CRITICAL',text:'Mangrove land ownership structure — government/community not farmer-owned',sub:'Q9 Line 157: "mangroves are generally on government/community lands." The current cost model (farmer mobilization, training) does not apply to mangrove projects. A separate cost structure, regulatory pathway, and revenue model is needed before mangrove output is usable.'},
+    {crit:'important',label:'IMPORTANT',text:'Is NGO on revenue share or fixed fee in actual agreements?',sub:'Document (Q10 L173) says NGO gets 5–15% revenue share. But many NGOs in practice negotiate fixed fees per farmer for onboarding work. The choice affects NGO risk exposure and developer residual significantly.'},
+    {crit:'important',label:'IMPORTANT',text:'Are revenue shares applied to gross or net revenue — and what is "net"?',sub:'Q10 L173 says "net revenues" but never defines net. If shares are of net-after-costs rather than gross, the developer keeps more. This changes all agent P&L numbers.'},
+    {crit:'important',label:'IMPORTANT',text:'Mango carbon price — no number in document or published literature',sub:'The model uses $6/t as a benchmark interpolated below agroforestry. No peer-reviewed yield studies or market price data specific to mango orchard carbon credits were found. This is the weakest assumption in the model.'},
+    {crit:'important',label:'IMPORTANT',text:'Verification cycle — actual agreed frequency with VVB',sub:'Document says "every 1–5 years." Model uses 3 (midpoint). The actual cycle agreed with the VVB and carbon standard significantly affects periodic cost timing and cash flow.'},
+    {crit:'low',label:'CLARIFY',text:'Does mango fruit income flow through the same revenue-sharing structure or directly to farmers?',sub:'Mango provides a dual income stream. If fruit income goes directly to farmers outside the carbon revenue structure, that changes farmer incentives and the effective economics of the 50–70% farmer carbon share.'},
+    {crit:'low',label:'CLARIFY',text:'GIS, legal, and MRV setup costs — get quotes from specific providers',sub:'All three are benchmarks. Actual costs depend heavily on existing data infrastructure, land tenure complexity, number of stakeholders, and technology choices. Get quotes before refining this model.'},
+    {crit:'low',label:'CLARIFY',text:'What additional certification is required for mangrove premium pricing?',sub:'Premium pricing ($15–35/t) for blue carbon often requires a second standard alongside Verra (e.g. Plan Vivo, CCBS) or specific co-benefit audits. Those certification costs are not in the current model.'},
+  ];
+  const pillBg={critical:'#FEE2E2',important:'#FEF3C7',low:'#F1F5F9'};
+  const pillTc={critical:'#991B1B',important:'#92400E',low:'#64748B'};
+  const html=qs.map(q=>`<div class="qitem">
+    <span class="qpill" style="background:${pillBg[q.crit]};color:${pillTc[q.crit]}">${q.label}</span>
+    <div>
+      <div class="qtext">${q.text}</div>
+      <div class="qsub">${q.sub}</div>
+    </div>
+  </div>`).join('');
+  document.getElementById('qDiv').innerHTML=`<div class="qcard">
+    <div class="qcard-hd"><h3>📋 Open Questions — Resolve Before Investment Decisions</h3><p>10 questions identified through the document analysis that materially affect model reliability</p></div>
+    <div class="qlist">${html}</div>
+  </div>`;
+}
+
+function updCards(){
+  document.querySelectorAll('.pc').forEach(el=>{
+    const k=el.dataset.k,p=PROJS[k],isAc=k===ST.type;
+    el.classList.toggle('active',isAc);
+    el.style.borderColor=isAc?p.color:'#E2E8F0';
+    el.style.background=isAc?p.light:'white';
+    el.querySelector('.pn').style.color=isAc?p.color:'#1E293B';
+    el.querySelector('.pp').textContent=`$${CFG.prices[k]}/t · ₹${Math.round(CFG.prices[k]*R)}/t`;
+    el.querySelector('.py').textContent=`${CFG.yields[k]} t/ha/yr`;
+  });
+}
+
 function updAll(){
-  const{type,ha,sc,dp}=ST,proj=PROJS[type],col=proj.color,m=compute(CFG,type,ha,sc,dp);
-  if(!chA||chA._col!==col){initCharts(col);chA._col=col;setTab(activeTab);}
-  updCharts(m);updMetrics(m,col);updWho(m,col);updCV(m);
+  const{type,ha,dp}=ST,col=PROJS[type].color,m=compute(CFG,type,ha,dp);
+  if(!charts.da||charts.da._col!==col){initCharts(col);setTab(activeTab);}
+  updCharts(m);updMetrics(m);updWho(m);updCV(m);updCards();
   document.getElementById('scaleV').textContent=ha.toLocaleString()+' ha';
-  document.getElementById('farmN').textContent='≈ '+m.fm.toLocaleString()+' farmers (0.5/ha estimate)';
+  document.getElementById('farmN').textContent='≈ '+m.fm.toLocaleString()+' farmers (0.5/ha)';
   document.getElementById('devV').textContent=dp+'%';
   document.getElementById('shareN').textContent=`Farmers ≈${m.farPct}% · NGO ${m.ngoPct}%`;
   document.getElementById('scWarn').style.display=ha<1000?'':'none';
-  document.querySelectorAll('.pc').forEach(el=>{
-    const k=el.dataset.k,p=PROJS[k],ac=k===type;
-    el.classList.toggle('active',ac);
-    el.style.borderColor=ac?p.color:'#E2E8F0';
-    el.style.background=ac?p.light:'white';
-    el.querySelector('.pn').style.color=ac?p.color:'#1E293B';
-  });
-  document.querySelectorAll('.ro').forEach(el=>{
-    const k=el.dataset.k,ac=k===sc;
-    el.style.background=ac?col:'white';
-    el.style.color=ac?'white':'#64748B';
-    el.style.borderColor=ac?col:'#E2E8F0';
-  });
-  document.querySelectorAll('.ct.active').forEach(el=>{el.style.color=col;el.style.borderBottomColor=col;});
+  document.getElementById('manWarn').style.display=type==='mangrove'?'':'none';
 }
 
 // Build controls
 Object.entries(PROJS).forEach(([k,p])=>{
   const d=document.createElement('div');
   d.className='pc';d.dataset.k=k;
-  d.innerHTML=`<div class="pi">${p.icon}</div><div class="pn">${p.name}</div><div class="pt">${p.note}</div>`;
+  d.innerHTML=`<div class="pi">${p.icon}</div><div class="pn">${p.name}</div><div class="pp"></div><div class="py"></div>`;
   d.addEventListener('click',()=>{ST.type=k;updAll();});
   document.getElementById('pcards').appendChild(d);
-});
-['conservative','base','premium'].forEach(s=>{
-  const l=document.createElement('label');
-  l.className='ro';l.dataset.k=s;
-  l.textContent=s.charAt(0).toUpperCase()+s.slice(1);
-  l.addEventListener('click',()=>{ST.sc=s;updAll();});
-  document.getElementById('scGroup').appendChild(l);
 });
 document.getElementById('scaleS').addEventListener('input',e=>{ST.ha=+e.target.value;updAll();});
 document.getElementById('devS').addEventListener('input',e=>{ST.dp=+e.target.value;updAll();});
 
-// Set back link
 const enc=encodeURIComponent(btoa(JSON.stringify(CFG)));
-document.getElementById('navAssLink').href='assumptions.html?config='+enc;
+document.getElementById('navAss').href='assumptions.html?config='+enc;
 document.getElementById('cfgNote').textContent=JSON.stringify(CFG)===JSON.stringify(DEFAULTS)?'Using default assumptions — edit in Assumptions page':'Using custom assumptions from Assumptions page';
 
 initCharts(PROJS[ST.type].color);
-setTab('a');
+setTab('da');
+updQuestions();
 updAll();
 </script>
 </body>
