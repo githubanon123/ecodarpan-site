@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon Project · Assumptions</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#F1F5F9;color:#1E293B;min-height:100vh}
+.steps{display:flex;align-items:center;gap:8px;padding:10px 28px;background:#0F2D1F;flex-wrap:wrap}
+.step{font-size:12px;color:#74C69D;text-decoration:none;padding:5px 12px;border-radius:5px;transition:background .12s}
+.step:hover{background:rgba(255,255,255,.1)}
+.step.active{background:#2D6A4F;color:white;font-weight:600}
+.arr{color:#2D6A4F;font-size:14px}
+header{background:#1B4332;color:white;padding:15px 28px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hl p{font-size:10px;letter-spacing:3px;color:#74C69D;text-transform:uppercase;margin-bottom:3px}
+.hl h1{font-size:18px;font-weight:700}
+.hl small{font-size:11px;color:#A7F3D0;display:block;margin-top:2px}
+.hbtns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn-go{background:#74C69D;color:#1B4332;font-weight:700;font-size:13px;padding:8px 18px;border-radius:7px;border:none;cursor:pointer}
+.btn-go:hover{background:#52B788}
+.btn-sec{background:rgba(255,255,255,.12);color:white;font-size:12px;padding:7px 13px;border-radius:6px;border:1px solid rgba(255,255,255,.25);cursor:pointer}
+.btn-sec:hover{background:rgba(255,255,255,.2)}
+.legend{display:flex;gap:14px;padding:8px 28px;background:#E8EDF2;border-bottom:1px solid #D1D5DB;flex-wrap:wrap}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:#475569}
+.ld{width:8px;height:8px;border-radius:50%}
+.main{padding:20px 28px;max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.card{background:white;border-radius:10px;border:1px solid #E2E8F0;overflow:hidden}
+.card-hd{padding:10px 16px;border-bottom:1px solid #E2E8F0;display:flex;align-items:baseline;gap:8px}
+.card-hd h2{font-size:13px;font-weight:700}
+.card-hd p{font-size:11px;color:#64748B}
+.warn-bar{padding:7px 14px;background:#FEF2F2;border-bottom:1px solid #FECACA;font-size:12px;color:#991B1B}
+table{width:100%;border-collapse:collapse}
+th{padding:6px 10px;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#94A3B8;font-weight:600;background:#F8FAFC;border-bottom:1px solid #F1F5F9;white-space:nowrap}
+td{padding:7px 10px;font-size:12px;color:#374151;border-bottom:1px solid #F8FAFC;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.inp-row{display:flex;align-items:center;gap:5px}
+input[type="number"]{width:85px;padding:4px 7px;border:1.5px solid #CBD5E1;border-radius:6px;font-size:13px;font-weight:600;color:#1E293B;text-align:right;outline:none}
+input[type="number"]:focus{border-color:#1B4332;box-shadow:0 0 0 2px #1B433215}
+input.inp-direct{border-color:#86EFAC}
+input.inp-partial{border-color:#FCD34D;background:#FFFDF0}
+input.inp-bench{border-color:#C4B5FD;background:#FAF8FF}
+input.inp-missing{border-color:#FCA5A5;background:#FFF5F5}
+.unit{font-size:10px;color:#94A3B8}
+.inr-eq{font-size:11px;color:#059669;font-weight:600;min-width:58px;white-space:nowrap}
+.ref{font-size:10px;color:#94A3B8;white-space:nowrap}
+.note-td{font-size:11px;color:#64748B;font-style:italic;line-height:1.4}
+.badge{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700;white-space:nowrap}
+.bd{background:#DCFCE7;color:#166534}
+.bp{background:#FEF3C7;color:#92400E}
+.bb{background:#EDE9FE;color:#5B21B6}
+.bm{background:#FEE2E2;color:#991B1B}
+.bearer{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700}
+.bdev{background:#DBEAFE;color:#1E40AF}
+.bngo{background:#DCFCE7;color:#166534}
+.grid-table th,.grid-table td{text-align:center}
+.grid-table th:first-child,.grid-table td:first-child{text-align:left}
+.grid-table td:first-child{font-weight:600}
+footer{padding:12px 28px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:white;border-top:1px solid #E2E8F0;position:sticky;bottom:0}
+.btn-reset{background:#F1F5F9;color:#475569;font-size:12px;padding:7px 14px;border-radius:6px;border:1px solid #D1D5DB;cursor:pointer}
+.btn-reset:hover{background:#E2E8F0}
+#copyMsg{font-size:12px;color:#059669;display:none}
+</style>
+</head>
+<body>
+<nav class="steps">
+  <a href="pipeline.html" class="step">📋 Document Pipeline</a>
+  <span class="arr">→</span>
+  <a href="assumptions.html" class="step active">⚙️ Assumptions</a>
+  <span class="arr">→</span>
+  <a href="#" class="step" id="navOutputLink">📊 Financial Output</a>
+</nav>
+<header>
+  <div class="hl">
+    <p>Carbon Project Financial Model — Step 2 of 3</p>
+    <h1>Assumptions &amp; Parameters</h1>
+    <small>Edit any value · INR shown at ₹84/$ · Changes carry to output page</small>
+  </div>
+  <div class="hbtns">
+    <button class="btn-sec" onclick="resetDefaults()">↺ Reset</button>
+    <button class="btn-sec" onclick="copyLink()">⧉ Share</button>
+    <button class="btn-go" onclick="viewOutput()">View Financial Output →</button>
+  </div>
+</header>
+<div class="legend">
+  <div class="li"><div class="ld" style="background:#16A34A"></div>From document (green border)</div>
+  <div class="li"><div class="ld" style="background:#D97706"></div>Derived from range (yellow)</div>
+  <div class="li"><div class="ld" style="background:#7C3AED"></div>Benchmark — no number in doc (purple)</div>
+  <div class="li"><div class="ld" style="background:#DC2626"></div>Not answered — question asked, no number (red)</div>
+</div>
+<div class="main" id="formRoot"></div>
+<footer>
+  <button class="btn-reset" onclick="resetDefaults()">↺ Reset all</button>
+  <button class="btn-reset" onclick="copyLink()">⧉ Copy link</button>
+  <span id="copyMsg">✓ Copied!</span>
+  <span style="font-size:11px;color:#94A3B8;margin-left:auto">USD inputs show INR equivalent at ₹84/$</span>
+</footer>
+<script>
+const R=84;
+const DEFAULTS={
+  prices:{agroforestry:{conservative:6,base:8,premium:12},mango:{conservative:5,base:6,premium:8},mangrove:{conservative:15,base:20,premium:35}},
+  yields:{agroforestry:{conservative:3,base:4.5,premium:6},mango:{conservative:2,base:3,premium:4},mangrove:{conservative:6,base:9,premium:14}},
+  firstCreditYear:{agroforestry:4,mango:5,mangrove:7},
+  costs:{pdd_base:12000,pdd_per_ha:0.30,valid_base:22000,valid_per_ha:0.40,legal:5000,gis_base:3000,gis_per_ha:1.50,mrv_base:2000,mrv_per_ha:4.00,mob_per_farmer:10,train_per_farmer:6,mon_per_ha:8,admin_annual:10000,engage_per_farmer:4,verif_base:25000,verif_per_ha:0.30,verif_cycle:3},
+  shares:{ngo_pct:10}
+};
+function loadCfg(){try{const p=new URLSearchParams(location.search).get('config');if(p)return JSON.parse(atob(decodeURIComponent(p)));}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS));}
+function collectCfg(){
+  const c=JSON.parse(JSON.stringify(DEFAULTS));
+  document.querySelectorAll('[data-path]').forEach(el=>{const parts=el.dataset.path.split('.');let o=c;for(let i=0;i<parts.length-1;i++)o=o[parts[i]];const v=parseFloat(el.value);o[parts[parts.length-1]]=isNaN(v)?0:v;});
+  return c;
+}
+function enc(c){return encodeURIComponent(btoa(JSON.stringify(c)));}
+function viewOutput(){location.href='output.html?config='+enc(collectCfg());}
+function resetDefaults(){
+  document.querySelectorAll('[data-path]').forEach(el=>{const parts=el.dataset.path.split('.');let o=DEFAULTS;for(let i=0;i<parts.length-1;i++)o=o[parts[i]];el.value=o[parts[parts.length-1]];updateInr(el);});
+}
+function copyLink(){
+  const url=location.origin+location.pathname+'?config='+enc(collectCfg());
+  navigator.clipboard.writeText(url).then(()=>{const m=document.getElementById('copyMsg');m.style.display='inline';setTimeout(()=>m.style.display='none',2500);}).catch(()=>prompt('Copy:',url));
+}
+function fmtInr(inr){if(inr>=1e7)return'₹'+(inr/1e7).toFixed(1)+'Cr';if(inr>=1e5)return'₹'+(inr/1e5).toFixed(1)+'L';if(inr>=1000)return'₹'+Math.round(inr/1000)+'k';return'₹'+Math.round(inr);}
+function updateInr(inp){
+  const eq=document.querySelector(`.inr-eq[data-for="${inp.dataset.path}"]`);if(!eq)return;
+  const unit=inp.dataset.unit||'';const v=parseFloat(inp.value)||0;
+  if(!unit||unit==='pct'||unit==='yr'){eq.textContent='';return;}
+  const suf={usd:'','usd-per-ha':'/ha','usd-per-t':'/t','usd-per-farmer':'/farmer','usd-per-fyr':'/f·yr'};
+  eq.textContent=fmtInr(v*R)+(suf[unit]||'');
+}
+const BADGE={direct:'<span class="badge bd">Doc ✓</span>',partial:'<span class="badge bp">Derived</span>',bench:'<span class="badge bb">Benchmark</span>',missing:'<span class="badge bm">Not answered</span>'};
+const CLS={direct:'inp-direct',partial:'inp-partial',bench:'inp-bench',missing:'inp-missing'};
+function numInp(path,val,step,status,unit){
+  const suf={usd:'',pct:'%',yr:'yr','usd-per-ha':'/ha','usd-per-t':'/t','usd-per-farmer':'/f','usd-per-fyr':'/f·yr'};
+  const inrDisp=(unit&&unit!=='pct'&&unit!=='yr')?fmtInr(val*R)+(suf[unit]||''):'';
+  return`<div class="inp-row"><input type="number" data-path="${path}" data-unit="${unit||'usd'}" value="${val}" step="${step}" min="0" class="${CLS[status]||'inp-direct'}"><span class="unit">${unit==='pct'?'%':unit==='yr'?'yr':'USD'}</span><span class="inr-eq" data-for="${path}">${inrDisp}</span></div>`;
+}
+function gv(cfg,path){return path.split('.').reduce((o,k)=>o?.[k],cfg);}
+function brow(b){return b==='dev'?'<span class="bearer bdev">Dev</span>':'<span class="bearer bngo">NGO</span>';}
+
+function buildPriceYield(cfg){
+  const types=[{key:'agroforestry',label:'Agroforestry',pst:'direct',pref:'Q1 L15'},{key:'mango',label:'Mango Orchard',pst:'missing',pref:'Q9 L153'},{key:'mangrove',label:'Mangrove',pst:'direct',pref:'Q1 L15'}];
+  const sc=['conservative','base','premium'];
+  function grid(title,sub,ck,getSt,warn){
+    let h='<tr><th>Project type</th>';sc.forEach(s=>h+=`<th style="text-align:center">${s}<br><small style="color:#94A3B8;font-size:9px">USD · INR</small></th>`);h+='<th>Doc ref</th><th>Status</th></tr>';
+    let b='';types.forEach(t=>{const st=getSt(t);b+=`<tr><td><strong>${t.label}</strong></td>`;sc.forEach(s=>{const path=`${ck}.${t.key}.${s}`;b+=`<td style="text-align:center">${numInp(path,gv(cfg,path),0.5,st,'usd-per-t')}</td>`;});b+=`<td class="ref">${t.pref}</td><td>${BADGE[st]}</td></tr>`;});
+    return`<div class="card"><div class="card-hd"><h2>${title}</h2><p>${sub}</p></div>${warn?`<div class="warn-bar">${warn}</div>`:''}<table class="grid-table"><thead>${h}</thead><tbody>${b}</tbody></table></div>`;
+  }
+  return grid('Carbon Credit Price (USD / tCO₂e)','Market price per tonne, by project type and scenario','prices',t=>t.pst)
+    +grid('⚠️ Carbon Yield (t CO₂e / ha / yr)','Annual sequestration per hectare — the single most important gap in the Q&A document','yields',()=>'missing',
+      '⚠️ Q9 Line 141 explicitly asked for yield per hectare per project type. The answer (Lines 151–159) gives qualitative comparisons only — no numbers. Values here are South Asia benchmarks. Confirm before using for investment decisions.');
+}
+
+function buildCosts(title,sub,items,cfg){
+  let rows='';
+  items.forEach(it=>{const v=gv(cfg,it.path);rows+=`<tr><td>${it.bearer?brow(it.bearer):''}</td><td><strong>${it.label}</strong></td><td>${numInp(it.path,v,it.step||1,it.status,it.unit||'usd')}</td><td class="ref">${it.source}</td><td>${BADGE[it.status]}</td><td class="note-td">${it.note||''}</td></tr>`;});
+  return`<div class="card"><div class="card-hd"><h2>${title}</h2><p>${sub}</p></div><table><thead><tr><th>Bearer</th><th>Item</th><th>Value (USD · INR)</th><th>Doc ref</th><th>Status</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function buildSimple(title,sub,items,cfg){
+  let rows='';
+  items.forEach(it=>{const v=gv(cfg,it.path);rows+=`<tr><td><strong>${it.label}</strong></td><td>${numInp(it.path,v,it.step||1,it.status,it.unit)}</td><td class="ref">${it.source}</td><td>${BADGE[it.status]}</td><td class="note-td">${it.note||''}</td></tr>`;});
+  return`<div class="card"><div class="card-hd"><h2>${title}</h2><p>${sub}</p></div><table><thead><tr><th>Parameter</th><th>Value</th><th>Doc ref</th><th>Status</th><th>Note</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function buildForm(cfg){
+  let html=buildPriceYield(cfg);
+  html+=buildCosts('One-time Setup — Developer (Year 1)','Capital developer funds. Doc values in INR; model runs USD at ₹84/$.',[
+    {bearer:'dev',label:'PDD — base',path:'costs.pdd_base',unit:'usd',step:500,source:'Q3 L45',status:'partial',note:'Doc: INR 10L–1Cr total range.'},
+    {bearer:'dev',label:'PDD — per hectare',path:'costs.pdd_per_ha',unit:'usd-per-ha',step:0.05,source:'Q3 L45',status:'partial',note:'Scale component. At 5k ha total ≈ $63k · ₹53L.'},
+    {bearer:'dev',label:'VVB Validation — base',path:'costs.valid_base',unit:'usd',step:500,source:'Q5 L85',status:'partial',note:'Doc: INR 15–50L.'},
+    {bearer:'dev',label:'VVB Validation — per ha',path:'costs.valid_per_ha',unit:'usd-per-ha',step:0.05,source:'Q5 L85',status:'partial',note:'Scale component.'},
+    {bearer:'dev',label:'Legal structuring',path:'costs.legal',unit:'usd',step:500,source:'Q3 L51',status:'bench',note:'No number in doc.'},
+    {bearer:'dev',label:'GIS / baseline — base',path:'costs.gis_base',unit:'usd',step:250,source:'Q3 L47',status:'bench',note:'Developer responsibility (proc. doc L25). No cost stated.'},
+    {bearer:'dev',label:'GIS / baseline — per ha',path:'costs.gis_per_ha',unit:'usd-per-ha',step:0.25,source:'Q3 L47',status:'bench',note:'Scale component.'},
+    {bearer:'dev',label:'MRV setup — base',path:'costs.mrv_base',unit:'usd',step:250,source:'Q6 L103',status:'bench',note:'Database, GPS, remote sensing. No cost stated.'},
+    {bearer:'dev',label:'MRV setup — per ha',path:'costs.mrv_per_ha',unit:'usd-per-ha',step:0.5,source:'Q6 L103',status:'bench',note:'Scale component.'},
+  ],cfg);
+  html+=buildCosts('One-time Setup — NGO (Year 1)','Funded from NGO revenue share — not deducted from developer P&L.',[
+    {bearer:'ngo',label:'Farmer mobilization',path:'costs.mob_per_farmer',unit:'usd-per-farmer',step:1,source:'Q4 L67',status:'direct',note:'Doc: INR 500–2,000/farmer. Midpoint INR 1,000 ÷ 84 ≈ $10 · ₹840.'},
+    {bearer:'ngo',label:'Initial farmer training',path:'costs.train_per_farmer',unit:'usd-per-farmer',step:0.5,source:'Q4 L69',status:'bench',note:'Doc confirms training occurs — no number given.'},
+  ],cfg);
+  html+=buildCosts('Annual Recurring — Developer','Every year across the 20-year project life.',[
+    {bearer:'dev',label:'Field monitoring',path:'costs.mon_per_ha',unit:'usd-per-ha',step:0.5,source:'Q6 L105',status:'missing',note:'Explicitly asked — no number. High sensitivity item.'},
+    {bearer:'dev',label:'Admin & oversight',path:'costs.admin_annual',unit:'usd',step:500,source:'—',status:'bench',note:'Not in doc. Benchmark for developer overhead.'},
+  ],cfg);
+  html+=buildCosts('Annual Recurring — NGO','Funded from NGO revenue share.',[
+    {bearer:'ngo',label:'Farmer engagement',path:'costs.engage_per_farmer',unit:'usd-per-fyr',step:0.5,source:'Q4 L71',status:'bench',note:'Doc confirms recurring — no cost stated.'},
+  ],cfg);
+  html+=buildCosts('Periodic — VVB Verification','Developer-borne. Triggers credit issuance.',[
+    {bearer:'dev',label:'Verification — base',path:'costs.verif_base',unit:'usd',step:500,source:'Q5 L87',status:'partial',note:'Doc: INR 10–40L/cycle.'},
+    {bearer:'dev',label:'Verification — per ha',path:'costs.verif_per_ha',unit:'usd-per-ha',step:0.05,source:'Q5 L87',status:'partial',note:'Scale component.'},
+  ],cfg);
+  html+=buildSimple('Timelines &amp; Verification Cycle','When the project first generates credits and how often verification occurs.',[
+    {label:'Verification cycle',path:'costs.verif_cycle',unit:'yr',step:1,source:'Q5 L87',status:'partial',note:'Doc: every 1–5 years. Using 3 (midpoint).'},
+    {label:'Agroforestry — first credit year',path:'firstCreditYear.agroforestry',unit:'yr',step:1,source:'Q8 L133',status:'direct',note:'Doc: 3–5 years → Year 4.'},
+    {label:'Mango — first credit year',path:'firstCreditYear.mango',unit:'yr',step:1,source:'Q8 L133',status:'direct',note:'Doc: 4–7 years → Year 5.'},
+    {label:'Mangrove — first credit year',path:'firstCreditYear.mangrove',unit:'yr',step:1,source:'Q8 L133',status:'direct',note:'Doc: 5–10 years → Year 7.'},
+  ],cfg);
+  html+=buildSimple('Revenue Sharing','NGO % set here. Developer % and farmer % set on output page. ⚠️ Doc says "net revenues" — net is undefined.',[
+    {label:'NGO share of gross revenue',path:'shares.ngo_pct',unit:'pct',step:1,source:'Q10 L173',status:'partial',note:'Doc: 5–15%. Using 10% (midpoint).'},
+  ],cfg);
+  document.getElementById('formRoot').innerHTML=html;
+  document.querySelectorAll('input[data-path]').forEach(inp=>{
+    inp.addEventListener('input',()=>{updateInr(inp);updateOutputLink();});
+  });
+}
+
+function updateOutputLink(){document.getElementById('navOutputLink').href='output.html?config='+enc(collectCfg());}
+const cfg=loadCfg();
+buildForm(cfg);
+document.getElementById('navOutputLink').href='output.html?config='+enc(cfg);
+</script>
+</body>
+</html>

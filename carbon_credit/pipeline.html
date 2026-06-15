@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon Project · Document Pipeline</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#F1F5F9;color:#1E293B;min-height:100vh}
+
+/* shared nav */
+.steps{display:flex;align-items:center;gap:8px;padding:10px 28px;background:#0F2D1F;flex-wrap:wrap}
+.step{font-size:12px;color:#74C69D;text-decoration:none;padding:5px 12px;border-radius:5px;transition:background .12s}
+.step:hover{background:rgba(255,255,255,.1)}
+.step.active{background:#2D6A4F;color:white;font-weight:600}
+.arr{color:#2D6A4F;font-size:14px}
+
+header{background:#1B4332;color:white;padding:16px 28px}
+header p{font-size:10px;letter-spacing:3px;color:#74C69D;text-transform:uppercase;margin-bottom:3px}
+header h1{font-size:19px;font-weight:700}
+header small{font-size:11px;color:#A7F3D0;display:block;margin-top:3px}
+
+.legend{display:flex;gap:16px;padding:8px 28px;background:#E8EDF2;border-bottom:1px solid #D1D5DB;flex-wrap:wrap}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:#475569}
+.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+.main{padding:20px 28px;max-width:1160px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+
+.intro{background:white;border-radius:10px;border:1px solid #E2E8F0;padding:14px 18px}
+.intro p{font-size:12px;color:#475569;line-height:1.6}
+.intro strong{color:#1B4332}
+
+.bucket{background:white;border-radius:10px;border:1px solid #E2E8F0;overflow:hidden}
+.bh{padding:10px 16px;border-bottom:1px solid #E2E8F0;display:flex;align-items:baseline;gap:10px}
+.bh h2{font-size:13px;font-weight:700}
+.bh p{font-size:11px;color:#64748B}
+
+table{width:100%;border-collapse:collapse}
+th{padding:6px 10px;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#94A3B8;font-weight:600;background:#F8FAFC;border-bottom:1px solid #F1F5F9;white-space:nowrap}
+td{padding:8px 10px;font-size:12px;color:#374151;border-bottom:1px solid #F8FAFC;vertical-align:top;line-height:1.45}
+tr:last-child td{border-bottom:none}
+.pname{font-weight:600;color:#1E293B}
+.bearer{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700}
+.bdev{background:#DBEAFE;color:#1E40AF}
+.bngo{background:#DCFCE7;color:#166534}
+
+/* doc says cell */
+.doc-val{font-family:monospace;font-size:12px;font-weight:600;color:#0F172A}
+.doc-ref{font-size:10px;color:#94A3B8;margin-top:2px}
+.doc-note{font-size:11px;color:#64748B;font-style:italic;margin-top:2px}
+
+/* arrow cell */
+.arrow-cell{color:#2D6A4F;font-size:18px;font-weight:700;text-align:center;padding:8px 6px}
+
+/* model val cell */
+.musd{font-family:monospace;font-size:13px;font-weight:700;color:#1E293B}
+.minr{font-family:monospace;font-size:11px;color:#64748B;margin-top:2px}
+
+/* status badges */
+.badge{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700;white-space:nowrap}
+.bd{background:#DCFCE7;color:#166534}
+.bp{background:#FEF3C7;color:#92400E}
+.bb{background:#EDE9FE;color:#5B21B6}
+.bm{background:#FEE2E2;color:#991B1B}
+
+/* method cell */
+.method{font-size:11px;color:#64748B;max-width:220px}
+
+.cta{background:#1B4332;border-radius:10px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.cta p{color:#A7F3D0;font-size:13px}
+.cta a{background:#74C69D;color:#1B4332;font-weight:700;font-size:13px;padding:9px 20px;border-radius:7px;text-decoration:none}
+.cta a:hover{background:#52B788}
+
+.gap-bar{background:#FEF2F2;border-left:3px solid #EF4444;padding:7px 12px;font-size:12px;color:#991B1B;border-bottom:1px solid #FECACA}
+</style>
+</head>
+<body>
+
+<header>
+  <p>Carbon Project Financial Model — Step 1 of 3</p>
+  <h1>Document → Assumptions Pipeline</h1>
+  <small>Source: Some_Questions__Respnses_15_6_26.docx · Every number, what it says, and how the model uses it</small>
+</header>
+
+<nav class="steps">
+  <a href="pipeline.html" class="step active">📋 Document Pipeline</a>
+  <span class="arr">→</span>
+  <a href="assumptions.html" class="step">⚙️ Assumptions</a>
+  <span class="arr">→</span>
+  <a href="output.html" class="step">📊 Financial Output</a>
+</nav>
+
+<div class="legend">
+  <div class="li"><div class="ld" style="background:#16A34A"></div>Used directly — taken as-is</div>
+  <div class="li"><div class="ld" style="background:#D97706"></div>Partial — midpoint chosen or range split into formula</div>
+  <div class="li"><div class="ld" style="background:#7C3AED"></div>Benchmark — item named but no number given</div>
+  <div class="li"><div class="ld" style="background:#DC2626"></div>Not answered — explicitly asked, no number in response</div>
+</div>
+
+<div class="main">
+
+<div class="intro">
+  <p>This page traces every assumption in the financial model back to its source in the Q&amp;A document. The <strong>Doc Says</strong> column shows what the document actually states (with line reference). The <strong>→</strong> arrow shows the translation method. The <strong>Model Uses</strong> column shows what value or formula the model applies — always in both USD and INR at ₹84/$. Rows shaded red are gaps where the document was asked but gave no number.</p>
+</div>
+
+<div id="tableRoot"></div>
+
+<div class="cta">
+  <p>All assumptions above are editable. Open the Assumptions page to change any value and see its effect on the output.</p>
+  <a href="assumptions.html">⚙️ Edit Assumptions →</a>
+</div>
+
+</div>
+
+<script>
+const PIPE = [
+  {
+    title: 'Revenue — Carbon Credit Price (USD/tCO₂e)',
+    sub: 'Market price per tonne of CO₂ removed. Drives revenue more than any other variable.',
+    cols: ['Parameter','Doc says (as stated)','Line ref','Status','→','Model: USD / t','Model: INR / t','Translation'],
+    rows: [
+      ['Agroforestry — conservative', '"USD 6–8 per tCO₂e" (Indian modelling assumption)', 'Q1, L15', 'direct', '$6', '₹504', 'Lower bound of the stated Indian planning range'],
+      ['Agroforestry — base',         '"USD 6–8 per tCO₂e"',                               'Q1, L15', 'direct', '$8', '₹672', 'Upper bound of stated range'],
+      ['Agroforestry — premium',      '"USD 5–15 per tCO₂e" (voluntary market range)',      'Q1, L7',  'partial','$12','₹1,008','Near top of global range; co-benefit premium projects'],
+      ['Mango — all scenarios',       'Not stated. Doc only says yield is "lower"',          'Q9, L153','missing','$5–$8','₹420–₹672','Gap — interpolated below agroforestry. Unverified.'],
+      ['Mangrove — conservative',     '"USD 15–20 per tCO₂e" (Indian modelling assumption)','Q1, L15', 'direct', '$15','₹1,260','Lower bound of stated Indian range'],
+      ['Mangrove — base',             '"USD 15–20 per tCO₂e"',                              'Q1, L15', 'direct', '$20','₹1,680','Upper bound'],
+      ['Mangrove — premium',          '"USD 15–50 per tCO₂e" (premium co-benefit range)',   'Q1, L7',  'partial','$35','₹2,940','Mid-to-upper of stated premium range'],
+    ]
+  },
+  {
+    title: 'Revenue — Carbon Yield (t CO₂e / ha / yr)',
+    sub: 'Annual sequestration per hectare. Multiplied by price to get gross revenue. ⚠️ Question was asked explicitly — answer gave no numbers.',
+    gap: '⚠️ Q9, Line 141 asked "What is the typical carbon credit yield per hectare?" The answer at Lines 151–159 gives only qualitative comparisons (e.g. "higher", "lower", "moderate") — no figures. All yield values are South Asia field benchmarks. This is the single most important gap to close before using this model for investment decisions.',
+    cols: ['Parameter','Doc says','Line ref','Status','→','Model value','INR equivalent','Translation'],
+    rows: [
+      ['Agroforestry yield','Asked — not answered quantitatively','Q9, L141','missing','3–6 t/ha/yr','₹1,512–₹4,032/ha/yr at base price','South Asia agroforestry field studies (benchmark)'],
+      ['Mango yield',       'Asked — not answered quantitatively','Q9, L141','missing','2–4 t/ha/yr','₹1,008–₹2,016/ha/yr at base price','Benchmark. Lower than agroforestry per doc (L153)'],
+      ['Mangrove yield',    'Asked — not answered quantitatively','Q9, L141','missing','6–14 t/ha/yr','₹7,560–₹23,520/ha/yr at base price','Blue carbon benchmark. Highest per doc (L155)'],
+    ]
+  },
+  {
+    title: 'Project Scale',
+    sub: 'Minimum and typical hectares for a viable project.',
+    cols: ['Parameter','Doc says','Line ref','Status','→','Model value','Translation'],
+    rows: [
+      ['Minimum viable scale','"Projects involving less than 1,000 hectares often struggle"','Q2, L31','direct','1,000 ha','Scale slider minimum + warning displayed below this'],
+      ['Typical project range','"5,000 to 50,000 hectares across multiple landowners"','Q2, L31','direct','5,000 ha default','Default set at lower-middle of stated range'],
+      ['Per-farmer density','Smallholders under 1 ha can participate when aggregated','Q2, L33','partial','0.5 farmers/ha','Doc confirms aggregation model but gives no density figure — benchmark'],
+    ]
+  },
+  {
+    title: 'One-time Setup Costs — Developer (Year 1)',
+    sub: 'Capital the developer must fund before any credits are generated. INR values are from the document; USD is the model conversion at ₹84/$.',
+    cols: ['Parameter','Bearer','Doc says (INR)','Line ref','Status','→','Model: USD','Model: INR','Translation'],
+    bearerCol: true,
+    rows: [
+      ['PDD preparation','dev','INR 10 lakh – 1 crore (project-level range)','Q3, L45','partial','$12k base + $0.30/ha','₹10.1L base + ₹25/ha','Midpoint converted ÷84. Range split into base+per-ha so cost scales with project size.'],
+      ['VVB initial validation','dev','INR 15–50 lakh (medium projects)','Q5, L85','partial','$22k base + $0.40/ha','₹18.5L base + ₹34/ha','Same treatment. At 5k ha: ~$44k total · ₹37L.'],
+      ['Legal structuring','dev','"Depending on stakeholders involved, costs may vary" — no number','Q3, L51','bench','$5k flat','₹4.2L','Benchmark. Doc names legal as a cost but gives no figure.'],
+      ['GIS / baseline setup','dev','"GIS analysis" listed as cost item — no number','Q3, L47','bench','$3k base + $1.50/ha','₹2.5L base + ₹126/ha','Benchmark. Developer responsibility per procedures doc L25.'],
+      ['MRV system setup','dev','"GIS mapping, GPS surveys, geotagging, remote sensing, database" — no cost','Q6, L103','bench','$2k base + $4.00/ha','₹1.7L base + ₹336/ha','Benchmark. Doc lists components but no cost.'],
+    ]
+  },
+  {
+    title: 'One-time Setup Costs — NGO (Year 1)',
+    sub: 'Funded from the NGO\'s revenue share — NOT deducted from the developer\'s P&L.',
+    cols: ['Parameter','Bearer','Doc says (INR)','Line ref','Status','→','Model: USD','Model: INR','Translation'],
+    bearerCol: true,
+    rows: [
+      ['Farmer mobilization','ngo','INR 500–2,000 per participating farmer','Q4, L67','direct','$10/farmer','₹840/farmer','Midpoint INR 1,000 ÷ 84 ≈ $11.9. Rounded to $10 (slightly conservative).'],
+      ['Initial farmer training','ngo','"Training costs can vary per farmer" — no number stated','Q4, L69','bench','$6/farmer','₹504/farmer','Benchmark. Doc confirms training occurs but gives no figure.'],
+    ]
+  },
+  {
+    title: 'Annual Recurring Costs',
+    sub: 'Costs that run every year for the full 20-year project life.',
+    cols: ['Parameter','Bearer','Doc says','Line ref','Status','→','Model: USD/yr','Model: INR/yr','Translation'],
+    bearerCol: true,
+    rows: [
+      ['Field monitoring','dev','"Annual monitoring costs can vary per hectare" — no number','Q6, L105','missing','$8/ha/yr','₹672/ha/yr','Gap — explicitly asked (Q6 header), not answered. Benchmark. High sensitivity: ±$2/ha moves 20-yr dev net significantly.'],
+      ['Project admin & oversight','dev','Not mentioned in document','—','bench','$10k/yr flat','₹8.4L/yr','Benchmark for developer coordination and overhead.'],
+      ['Farmer engagement (NGO)','ngo','"Regular communication, training, monitoring visits" confirmed recurring — no number','Q4, L71','bench','$4/farmer/yr','₹336/farmer/yr','Benchmark. Doc confirms recurring nature, gives no cost.'],
+    ]
+  },
+  {
+    title: 'Periodic Costs — VVB Verification',
+    sub: 'Verification triggers carbon credit issuance. Developer-borne. Frequency set by carbon standard and project design.',
+    cols: ['Parameter','Bearer','Doc says (INR)','Line ref','Status','→','Model: USD','Model: INR','Translation'],
+    bearerCol: true,
+    rows: [
+      ['Verification cost per cycle','dev','INR 10–40 lakh per assessment cycle','Q5, L87','partial','$25k base + $0.30/ha','₹21L base + ₹25/ha','Midpoint INR 25L ÷ 84 ≈ $30k. Modelled as base+per-ha to scale with project size.'],
+      ['Verification frequency','dev','"Commonly occurs every one to five years"','Q5, L87','partial','Every 3 years','—','Midpoint of stated range. Actual frequency is project and standard specific.'],
+    ]
+  },
+  {
+    title: 'Timelines — Years to First Carbon Credits',
+    sub: 'Pure cost outflow until this year. Revenue starts from first credit year onward.',
+    cols: ['Parameter','Doc says','Line ref','Status','→','Model uses','Translation'],
+    rows: [
+      ['Agroforestry — first credits','"Three to five years after project initiation"','Q8, L133','direct','Year 4','Midpoint (4) of 3–5 range. Zero revenue in Years 1–3.'],
+      ['Mango / orchard — first credits','"Four to seven years"','Q8, L133','direct','Year 5','Midpoint (5.5) rounded down.'],
+      ['Mangrove — first credits','"Five to ten years"','Q8, L133','direct','Year 7','Midpoint (7.5) rounded down.'],
+      ['Total pre-revenue investment','"Several million to tens of crores" before first revenue','Q8, L129','partial','—','Too wide to use as a number. Provides directional sanity check only.'],
+    ]
+  },
+  {
+    title: 'Revenue Sharing',
+    sub: 'How gross carbon revenue is split. ⚠️ Document says "net revenues" but does not define what net means — model applies shares to gross.',
+    cols: ['Parameter','Doc says','Line ref','Status','→','Model uses','Translation'],
+    rows: [
+      ['Farmer / community share','"50% to 70% of net revenues"','Q10, L173','partial','Residual: 100% − dev% − NGO%','Doc gives range. Model derives as residual. At dev=30% + NGO=10%, farmers get 60% — within range but not independently controlled. Should have own slider.'],
+      ['NGO / implementation partner','"5% to 15%"','Q10, L173','partial','10% (editable)','Midpoint. Exposed as an editable assumption in the Assumptions page.'],
+      ['Developer','"20% to 40%"','Q10, L173','direct','20–40% slider on output page','Full range exposed as an interactive control.'],
+      ['Technical agencies (GIS, VVB, etc.)','"Generally compensated through fixed fees rather than revenue-sharing"','Q10, L175','direct','In developer cost column','Not in revenue split. Correctly modelled as fixed-fee costs borne by developer.'],
+      ['Gross vs net definition','"Net revenues" — undefined in document','Q10, L173','missing','Applied to gross','Critical gap. Model assumes gross. If shares are of net-after-costs, developer net improves significantly.'],
+    ]
+  }
+];
+
+const STATUS = {direct:'bd',partial:'bp',bench:'bb',missing:'bm'};
+const LABEL  = {direct:'Doc ✓',partial:'Derived',bench:'Benchmark',missing:'Not answered'};
+
+function badge(s){return`<span class="badge ${STATUS[s]||'bb'}">${LABEL[s]||s}</span>`}
+function bearer(b){return b==='dev'?'<span class="bearer bdev">Developer</span>':'<span class="bearer bngo">NGO</span>'}
+
+function renderBucket(b){
+  const hasBearerCol = b.bearerCol;
+  const isGap = b.gap;
+
+  // Build header row
+  const ths = b.cols.map(c=>`<th>${c}</th>`).join('');
+
+  // Build data rows
+  const trs = b.rows.map(r=>{
+    let cells = [];
+    let rIdx = 0;
+
+    cells.push(`<td class="pname">${r[rIdx++]}</td>`);
+    if(hasBearerCol) cells.push(`<td>${bearer(r[rIdx++])}</td>`);
+    cells.push(`<td><span class="doc-val">${r[rIdx++]}</span></td>`);
+    cells.push(`<td class="doc-ref">${r[rIdx++]}</td>`);
+    cells.push(`<td>${badge(r[rIdx++])}</td>`);
+    cells.push(`<td class="arrow-cell">→</td>`);
+
+    // Model value cells — may be 1 (USD only) or 2 (USD + INR)
+    const remaining = r.slice(rIdx);
+    if(remaining.length === 2){
+      // single model val + method
+      cells.push(`<td><span class="musd">${remaining[0]}</span></td>`);
+      cells.push(`<td class="method">${remaining[1]}</td>`);
+    } else if(remaining.length === 3){
+      // USD | INR | method
+      cells.push(`<td><span class="musd">${remaining[0]}</span><br><span class="minr">${remaining[1]}</span></td>`);
+      cells.push(`<td class="method">${remaining[2]}</td>`);
+    }
+
+    const rowClass = r.includes('missing') ? 'style="background:#FFF8F8"' : '';
+    return`<tr ${rowClass}>${cells.join('')}</tr>`;
+  }).join('');
+
+  return`<div class="bucket">
+    <div class="bh"><h2>${b.title}</h2><p>${b.sub}</p></div>
+    ${isGap?`<div class="gap-bar">${b.gap}</div>`:''}
+    <div style="overflow-x:auto">
+    <table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>
+    </div>
+  </div>`;
+}
+
+document.getElementById('tableRoot').innerHTML = PIPE.map(renderBucket).join('');
+</script>
+</body>
+</html>
